@@ -26,9 +26,10 @@ The following are criteria for a frequency distribution to be a binomial distrib
 ![image](https://user-images.githubusercontent.com/104613195/166250867-46571ef5-f77b-4658-86ce-1c60c52fdfb1.png)
 
 # Program
-```
-# Developed by: KRISHNA MOORTHY S
+```python
+# Developed by
 # Register Number: 212220230025
+# Name: Krishna moorthy s
 
 import numpy as np
 import math
@@ -41,30 +42,28 @@ N=np.sum(f)
 mean=np.inner(X,f)/N
 p=mean/n
 q=1-p
-P=list(); E=list(); xi=list()
+Pr=list(); E=list(); xi=list()
 print("  X P(X=x) Obs.Fr  Ex.Fre   xi ")
 print("----------------------------------")
 for x in range(7):
     c=math.factorial(n)/(math.factorial(x)*math.factorial(n-x))
-    P.append(c*p**x*q**(n-x))
-    E.append(P[x]*N)
+    Pr.append(c*p*x*q*(n-x))
+    E.append(Pr[x]*N)
     xi.append((f[x]-E[x])**2/E[x])
-    print("%2.2f %2.2f  %4.2f   %3.2f  %3.2f"%(x,P[x],f[x],E[x],xi[x]))
+    print("%2.2f %2.2f  %4.2f   %3.2f  %3.2f"%(x,Pr[x],f[x],E[x],xi[x]))
 print("----------------------------------")
-cal_val=np.sum(xi)
-print("Calculated value of Chi square is %4.2f"%cal_val)
-tab_val=scipy.stats.chi2.ppf(1-.01, df=n)
-print("Table value of Chi square at 1  level is %4.2f"%tab_val)
-if cal_val<tab_val:
+cal_chi2=np.sum(xi)
+print("Calculated value of Chi square is %4.2f"%cal_chi2)
+tab_chi2=scipy.stats.chi2.ppf(1-.01, df=n)
+print("Table value of Chi square at 1  level is %4.2f"%tab_chi2)
+if cal_chi2<tab_chi2:
     print("The given data can be fitted in binomial distribution at 1% LOS")
 else:
     print("The given data cannot be fitted in binomial distribution at 1% LOS")
-
 ```
 
+# Output : 
+![Screenshot (120)](https://user-images.githubusercontent.com/75235334/166264189-755b4078-b252-4495-a73f-cdf0e1994f85.png)
 
-# Results and Output : 
-![image](https://user-images.githubusercontent.com/75235813/166463733-76e1dd78-22bc-4bfb-b6aa-e8e195a40eba.png)
-![image](https://user-images.githubusercontent.com/75235813/166463845-809998b4-2cd9-48e9-905d-6a37e6a8eb79.png)
-
-Thus, a program to fit binomial distribution for the given frequency distribution is implemented.
+# Result:
+Thus, the program to fit binomial distribution was implemented
